@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	id="com.hughisaacs2.cordova.plugins.androidtvplugin"
+	id="com.comrat.cordova.plugins.ttkplugin"
 	version="1.0.3">
 
-	<name>AndroidTVPlugin</name>
+	<name>TTKPlugin</name>
 	<description>Cordova Android TV Plugin</description>
-	<author email="hughisaacs@acrylicstyle.com" href="http://hughisaacs2.acrylicstyle.com">Hugh Isaacs II</author>
+	<author email="poberyaa@gmail.com" href="http://pureqml.com">Hugh Isaacs II</author>
 	<license>MIT</license>
 	<keywords>ecosystem:cordova,cordova-android</keywords>
 	<engines>
