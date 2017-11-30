@@ -5,8 +5,8 @@
 	version="1.0.3">
 
 	<name>TTKPlugin</name>
-	<description>Cordova Android TV Plugin</description>
-	<author email="poberyaa@gmail.com" href="http://pureqml.com">Hugh Isaacs II</author>
+	<description>Cordova TTK Plugin</description>
+	<author email="poberyaa@gmail.com" href="http://pureqml.com">comrat</author>
 	<license>MIT</license>
 	<keywords>ecosystem:cordova,cordova-android</keywords>
 	<engines>
@@ -14,6 +14,14 @@
 	</engines>
 
 	<platform name="android">
+		<config-file target="config.xml" parent="/*">
+			<feature name="TTK">
+				<param name="android-package" value="org.apache.cordova.plugin.TTK"/>
+			</feature>
+		</config-file>
+
+		<source-file src="src/android/ttk/TTK.java" target-dir="src/org/apache/cordova/plugin" />
+
 		<config-file target="AndroidManifest.xml" parent="/manifest">
 			<uses-feature android:name="android.software.leanback" android:required="true" />
 			<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
