@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 
 
@@ -35,7 +36,7 @@ public class TTK extends CordovaPlugin {
 		intent.addCategory(Intent.CATEGORY_DEFAULT);
 		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 		try {
-			startActivity(intent);
+			this.cordova.getActivity().startActivity(intent);
 			callbackContext.success("");
 		} catch (ActivityNotFoundException e) {
 			callbackContext.error("Failed to returnToMainApp");
@@ -48,7 +49,7 @@ public class TTK extends CordovaPlugin {
 		intent.addCategory(Intent.CATEGORY_DEFAULT);
 		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 		try {
-			startActivity(intent);
+			this.cordova.getActivity().startActivity(intent);
 			callbackContext.success(intent.getStringExtra("tv.lfstrm.ttktv.extra_token"));
 		} catch(ActivityNotFoundException e) {
 			callbackContext.error("Failed to refreshToken");
