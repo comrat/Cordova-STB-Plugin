@@ -7,6 +7,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
+
+
 /**
  * * This class provides methods for TTK STB.
  * */
@@ -19,6 +22,7 @@ public class TTK extends CordovaPlugin {
 			this.returnToMainApp(message, callbackContext);
 			return true;
 		} else if (action.equals("refreshToken")) {
+			String message = args.getString(0);
 			this.refreshToken(message, callbackContext);
 			return true;
 		}
