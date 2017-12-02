@@ -44,8 +44,9 @@ public class TTK extends CordovaPlugin {
 	}
 
 	private void refreshToken(String action, CallbackContext callbackContext) {
+		Intent intent = this.cordova.getActivity();
 		try {
-			callbackContext.success(this.cordova.getActivity().getStringExtra("tv.lfstrm.ttktv.extra_token"));
+			callbackContext.success(intent.getStringExtra("tv.lfstrm.ttktv.extra_token"));
 		} catch(ActivityNotFoundException e) {
 			callbackContext.error("Failed to refreshToken");
 		}
