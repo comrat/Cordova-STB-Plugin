@@ -18,11 +18,7 @@ public class TTK extends CordovaPlugin {
 
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		if (action.equals("returnToMainApp")) {
-			String message = args.getString(0);
-			this.returnToMainApp(message, callbackContext);
-			return true;
-		} else if (action.equals("refreshToken")) {
+		if (action.equals("refreshToken")) {
 			String message = args.getString(0);
 			this.refreshToken(message, callbackContext);
 			return true;
