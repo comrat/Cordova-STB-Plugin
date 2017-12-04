@@ -22,11 +22,33 @@ public class TTK extends CordovaPlugin {
 			String message = args.getString(0);
 			this.refreshToken(message, callbackContext);
 			return true;
+		} else if (action.equals("refreshToken")) {
+			this.getToken(callbackContext);
+			return true;
 		}
 		return false;
 	}
 
 	private void refreshToken(String action, CallbackContext callbackContext) {
+		Intent intent = this.cordova.getActivity().getIntent();
+		try {
+			String token = intent.getStringExtra(message);
+			Intent intent = new Intent();
+			intent.setAction(action);
+			intent.setCategory(CATEGORY_LAUNCHER);
+			intent.setFlags(
+				Intent.FLAG_ACTIVITY_SINGLE_TOP |
+				Intent.FLAG_ACTIVITY_NEW_TASK
+			);
+			startActivity(intent);
+
+			callbackContext.success(token);
+		} catch(ActivityNotFoundException e) {
+			callbackContext.error("Failed to refreshToken");
+		}
+	}
+
+	private void getToken(CallbackContext callbackContext) {
 		Intent intent = this.cordova.getActivity().getIntent();
 		try {
 			String token = intent.getStringExtra("tv.lfstrm.ttktv.extra_token");
