@@ -24,10 +24,6 @@ public class TTK extends CordovaPlugin {
 			String message = args.getString(0);
 			this.refreshToken(message, callbackContext);
 			return true;
-		} else if (action.equals("startActivity")) {
-			String message = args.getString(0);
-			this.startActivity(message, callbackContext);
-			return true;
 		} else if (action.equals("checkActionAndGetToken")) {
 			String actionName = args.getString(0);
 			String token = args.getString(1);
@@ -53,30 +49,6 @@ public class TTK extends CordovaPlugin {
 		} catch(ActivityNotFoundException e) {
 			callbackContext.error("Failed to get action");
 		}
-	}
-
-	//TODO: experemental method
-	private void startActivity(String action, CallbackContext callbackContext) {
-		this.cordova.getActivity().runOnUiThread(new Runnable() {
-			private String action;
-
-			@Override
-			public void run() {
-				Context context = cordova.getActivity().getApplicationContext();
-				Intent intent = cordova.getActivity().getIntent();
-				Log.d("CordovaActivity", "SetAction: " + action);
-				intent.setAction(action);
-				intent.addCategory(Intent.CATEGORY_DEFAULT);
-				intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-				cordova.setActivityResultCallback(TTK.this);
-				cordova.getActivity().startActivityForResult(intent, 0);
-			}
-
-			private Runnable init(String requiredAction){
-				action = requiredAction;
-				return this;
-			}
-		}.init(action) );
 	}
 
 	private void refreshToken(String tokenName, CallbackContext callbackContext) {
