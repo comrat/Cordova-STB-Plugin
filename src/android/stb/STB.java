@@ -14,9 +14,9 @@ import android.util.Log;
 
 
 /**
- * * This class provides methods for TTK STB.
+ * * This class provides methods for STB STB.
  * */
-public class TTK extends CordovaPlugin {
+public class STB extends CordovaPlugin {
 
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -35,15 +35,15 @@ public class TTK extends CordovaPlugin {
 
 	private void checkActionAndGetToken(String action, String tokenName, CallbackContext callbackContext) {
 		Intent intent = this.cordova.getActivity().getIntent();
-		Log.d("CordovaTTKPlugin", "checkActiion: " + action + ", tokenName: " + tokenName);
+		Log.d("CordovaSTBPlugin", "checkActiion: " + action + ", tokenName: " + tokenName);
 		try {
 			String token = intent.getStringExtra(tokenName);
-			Log.d("CordovaTTKPlugin", "Get token:" + token);
+			Log.d("CordovaSTBPlugin", "Get token:" + token);
 			if (action.equals(intent.getAction())) {
-				Log.d("CordovaTTKPlugin", "action is equal, return token" + token);
+				Log.d("CordovaSTBPlugin", "action is equal, return token" + token);
 				callbackContext.success(token);
 			} else {
-				Log.d("CordovaTTKPlugin", "action is not equal");
+				Log.d("CordovaSTBPlugin", "action is not equal");
 				callbackContext.success("");
 			}
 		} catch(ActivityNotFoundException e) {
@@ -53,10 +53,10 @@ public class TTK extends CordovaPlugin {
 
 	private void refreshToken(String tokenName, CallbackContext callbackContext) {
 		Intent intent = this.cordova.getActivity().getIntent();
-		Log.d("CordovaTTKPlugin", "refreshToken " + tokenName);
+		Log.d("CordovaSTBPlugin", "refreshToken " + tokenName);
 		try {
 			String token = intent.getStringExtra(tokenName);
-			Log.d("CordovaTTKPlugin", "Got token:" + token);
+			Log.d("CordovaSTBPlugin", "Got token:" + token);
 			callbackContext.success(token);
 		} catch(ActivityNotFoundException e) {
 			callbackContext.error("Failed to refreshToken");
